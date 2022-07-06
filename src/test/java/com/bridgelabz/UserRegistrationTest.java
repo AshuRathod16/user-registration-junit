@@ -5,97 +5,98 @@ import org.junit.Test;
 
 public class UserRegistrationTest {
 
-    // positive test case  for firstName return true
+    // positive test case  for firstName
     @Test
     public void validateFirstNameTestReturnTrue() throws UserRegistrationException {
         UserRegistration userRegistration = new UserRegistration();
-        boolean actualOutput = userRegistration.validateFirstName("Ashwini");
+        boolean actualOutput = userRegistration.validateFirstName.validate("Ashwini");
         Assert.assertTrue(actualOutput);
     }
 
-    // negative test case for firstName return false
+    // negative test case for firstName
     @Test
     public void validateFirstNameTestReturnFalse() {
         UserRegistration userRegistration = new UserRegistration();
         try {
-            boolean actualOutput = userRegistration.validateFirstName("ashu16");
+            boolean actualOutput = userRegistration.validateFirstName.validate("ashu16");
         } catch (UserRegistrationException exception) {
             Assert.assertEquals("Invalid First Name", exception.getMessage());
         }
 
     }
 
-    // positive test case for lastName return true
+    // positive test case for lastName
     @Test
     public void validateLastNameTestReturnTrue() throws UserRegistrationException {
         UserRegistration userRegistration = new UserRegistration();
-        boolean actualOutput = userRegistration.validateLastname("Rathod");
+        boolean actualOutput = userRegistration.validateLastName.validate("Rathod");
         Assert.assertTrue(actualOutput);
     }
 
-    // negative test case for lastName return false
+    //    // negative test case for lastName
     @Test
     public void validateLastNameTestReturnFalse() {
         UserRegistration userRegistration = new UserRegistration();
         try {
-            boolean actualOutput = userRegistration.validateLastname("rathod");
+            boolean actualOutput = userRegistration.validateLastName.validate("rathod");
         } catch (UserRegistrationException exception) {
             Assert.assertEquals("Invalid Last Name", exception.getMessage());
         }
     }
 
-    // positive test case for email return true
+    //
+    // positive test case for email
     @Test
     public void validateEmailTestReturnTrue() throws UserRegistrationException {
         UserRegistration userRegistration = new UserRegistration();
-        boolean actualOutput = userRegistration.validateEmail("rashwini510@gamil.com");
+        boolean actualOutput = userRegistration.validateEmail.validate("rashwini510@gamil.com");
         Assert.assertTrue(actualOutput);
     }
 
-    // negative test case for email return false
+    // negative test case for email
     @Test
     public void validateEmailTestReturnFalse() {
         UserRegistration userRegistration = new UserRegistration();
         try {
-            boolean actualOutput = userRegistration.validateEmail("abc@@in.");
+            boolean actualOutput = userRegistration.validateEmail.validate("abc@@in.");
         } catch (UserRegistrationException exception) {
             Assert.assertEquals("Invalid Email", exception.getMessage());
         }
     }
 
-    // positive test case for mobile number return true
+    // positive test case for mobile number
     @Test
     public void validateMobileNumberReturnTrue() throws UserRegistrationException {
         UserRegistration userRegistration = new UserRegistration();
-        boolean actualOutput = userRegistration.validateMobileNumber("+91 9689410960");
+        boolean actualOutput = userRegistration.validateMobileNumber.validate("+91 9689410960");
         Assert.assertTrue(actualOutput);
     }
 
-    // negative test case for mobile number return false
+    // negative test case for mobile number
     @Test
     public void validateMobileNumberReturnFalse() {
         UserRegistration userRegistration = new UserRegistration();
         try {
-            boolean actualOutput = userRegistration.validateMobileNumber("+91968");
+            boolean actualOutput = userRegistration.validateMobileNumber.validate("+919410");
         } catch (UserRegistrationException exception) {
             Assert.assertEquals("Invalid Mobile Number", exception.getMessage());
         }
     }
 
-    // positive test case for password return true
+    // positive test case for password
     @Test
     public void validatePasswordReturnTrue() throws UserRegistrationException {
         UserRegistration userRegistration = new UserRegistration();
-        boolean actualOutput = userRegistration.validatePassword("AshwiniRathod@16");
+        boolean actualOutput = userRegistration.validatePassword.validate("AshwiniRathod@16");
         Assert.assertTrue(actualOutput);
     }
 
-    // negative test case for password return false
+    // negative test case for password
     @Test
     public void validatePasswordReturnFalse() {
         UserRegistration userRegistration = new UserRegistration();
         try {
-            boolean actualOutput = userRegistration.validatePassword("ashu@16");
+            boolean actualOutput = userRegistration.validatePassword.validate("ashu@.");
         } catch (UserRegistrationException exception) {
             Assert.assertEquals("Invalid Password", exception.getMessage());
         }

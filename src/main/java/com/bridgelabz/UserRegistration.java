@@ -2,50 +2,49 @@ package com.bridgelabz;
 
 import java.util.regex.Pattern;
 
-public class UserRegistration {
-    // method to check firstname Valid or Invalid
-    public boolean validateFirstName(String firstName) throws UserRegistrationException {
-        // regex pattern for firstname
-      if (Pattern.matches("[A-Z][a-z A-Z]{2,}", firstName))
-          return true;
-      else
-          throw new UserRegistrationException("Invalid First Name");
-    }
+@FunctionalInterface
+interface UserDetailsValidationFI {
+    boolean validate(String x) throws UserRegistrationException;
+}
 
-    // method to check lastName Valid or Invalid
-    public boolean validateLastname(String lastName) throws UserRegistrationException{
+public class UserRegistration {
+    UserDetailsValidationFI validateFirstName = firstName -> {
+        // regex pattern for firstname
+        if (Pattern.matches("[A-Z][a-z A-Z]{2,}", firstName))
+            return true;
+        else
+            throw new UserRegistrationException("Invalid First Name");
+    };
+
+    UserDetailsValidationFI validateLastName = lastName -> {
         // regex pattern for lastname
         if (Pattern.matches("[A-Z][a-z A-Z]{2,}", lastName))
             return true;
         else
             throw new UserRegistrationException("Invalid Last Name");
+    };
 
-    }
-
-    // method to check email Valid or Invalid
-    public boolean validateEmail(String email) throws UserRegistrationException {
+    UserDetailsValidationFI validateEmail = email -> {
         // regex pattern for email
         if (Pattern.matches("[\\w+-]+(?:\\.[\\w+-]+)*[@][\\w]{1,}([.]{1}[a-z]{2,}){1,2}", email))
             return true;
         else
             throw new UserRegistrationException("Invalid Email");
-    }
+    };
 
-    // method to check mobile number Valid or Invalid
-    public boolean validateMobileNumber(String mobileNumber) throws UserRegistrationException {
+    UserDetailsValidationFI validateMobileNumber = mobileNumber -> {
         // regex pattern for mobile number
-       if (Pattern.matches("[+]91 [6-9]\\d{9}", mobileNumber))
-           return true;
-       else
-           throw new UserRegistrationException("Invalid mobile number");
-    }
+        if (Pattern.matches("[+]91 [6-9]\\d{9}", mobileNumber))
+            return true;
+        else
+            throw new UserRegistrationException("Invalid Mobile Number");
+    };
 
-    // method to check the password Valid
-    public boolean validatePassword(String password) throws UserRegistrationException {
+    UserDetailsValidationFI validatePassword = password -> {
         // regex pattern for password
-       if (Pattern.matches("(?=.*[A-Z])(?=.*\\d)(?=.*[$&+,:;=?@#|'<>.-^*()%!])[a-z A-Z \\d $&+,:;=?@#|'<>.-^*()%!]{8,}", password))
-           return true;
-       else
-           throw new UserRegistrationException("Invalid Password");
-    }
+        if (Pattern.matches("(?=.*[A-Z])(?=.*\\d)(?=.*[$&+,:;=?@#|'<>.-^*()%!])[a-z A-Z \\d $&+,:;=?@#|'<>.-^*()%!]{8,}", password))
+            return true;
+        else
+            throw new UserRegistrationException("Invalid Password");
+    };
 }
